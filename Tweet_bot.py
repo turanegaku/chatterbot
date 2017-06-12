@@ -30,7 +30,7 @@ class Listener(tweepy.StreamListener):
     ret = conn.execute(sql)
     rows = ret.fetchall()
     subjectCount=rows[0][0]
-    plese_answer=[u"どう答えれば良いのかわかりません", u"どう返答するのが望ましいですか",u"どう返せばいいの？"]
+    please_answer=[u"どう答えれば良いのかわかりません", u"どう返答するのが望ましいですか",u"どう返せばいいの？"]
     reply_answer=[u"覚えました", u"わかりました",u"ok"]
 
     def on_status(self, status):
