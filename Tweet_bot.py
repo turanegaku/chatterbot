@@ -38,7 +38,7 @@ class Listener(tweepy.StreamListener):
             print('------------------------------')
             print(status.text)
             print(u"{name}({screen}) {created} via {src}\n".format(
-                name=status.author.name, 
+                name=status.author.name,
                 screen=status.author.screen_name,
                 created=status.created_at,
                 src=status.source))
@@ -49,11 +49,11 @@ class Listener(tweepy.StreamListener):
         except :
             traceback.print_exc()
         return True
-     
+
     def on_error(self, status_code):
         print('Got an error with status code: ' + str(status_code))
         return True
-     
+
     def on_timeout(self):
         print('Timeout...')
         return True
@@ -63,7 +63,7 @@ class Listener(tweepy.StreamListener):
         word = self.extact_reply_word(status)
         if word == "":
             self.reaction_word(status)
-            return 
+            return
         else:
             screen_name = status.user.screen_name
             if self.teacher_name == "":
@@ -101,7 +101,7 @@ class Listener(tweepy.StreamListener):
             self.answer_num +=1
             if self.answer_num == 3:
                 self.answer_num=0
-            
+
             api.update_status(status = text,in_reply_to_status_id=status_id)
             self.user_word = word
             self.teacher_name = screen_name
